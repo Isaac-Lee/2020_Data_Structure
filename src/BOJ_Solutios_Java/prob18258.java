@@ -43,7 +43,7 @@ public class prob18258 {
                 if (q.isEmpty()) {
                     System.out.println(-1);
                 } else {
-                    System.out.println(q.;
+                    System.out.println(q);
                 }
             }
         }
