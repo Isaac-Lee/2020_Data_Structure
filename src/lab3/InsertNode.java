@@ -17,6 +17,7 @@ public class InsertNode {
     static class MyList {
         public MyNode head;
         public MyNode tail;
+        public int size = 0;
 
         public MyList() {
             this.head = null;
@@ -31,8 +32,8 @@ public class InsertNode {
             } else {
                 this.tail.next = node;
             }
-
             this.tail = node;
+            size++;
         }
     }
 
