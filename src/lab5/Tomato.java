@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 
 public class Tomato {
     public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int m, n;
@@ -38,6 +39,7 @@ public class Tomato {
 
         int answer = 0;
         boolean changed = true;
+        boolean hasTomato = false;
 
         while (changed) {
             for (int i = 0; i < n; i++) {
@@ -60,6 +62,7 @@ public class Tomato {
                         q.offer(tmp);
                     }
                     changed = true;
+                    hasTomato = true;
                 }
                 if (x > 0 && map[y][x-1] > 0 && isChange[y][x-1] == false) {
                     isChange[y][x-1] = true;
@@ -69,6 +72,7 @@ public class Tomato {
                         q.offer(tmp);
                     }
                     changed = true;
+                    hasTomato = true;
                 }
                 if (y < n-1 && map[y+1][x] > 0 && isChange[y+1][x] == false) {
                     isChange[y+1][x] = true;
@@ -78,6 +82,7 @@ public class Tomato {
                         q.offer(tmp);
                     }
                     changed = true;
+                    hasTomato = true;
                 }
                 if (x < m-1 && map[y][x+1] > 0 && isChange[y][x+1] == false) {
                     isChange[y][x+1] = true;
@@ -87,8 +92,11 @@ public class Tomato {
                         q.offer(tmp);
                     }
                     changed = true;
+                    hasTomato = true;
                 }
-                q.offer(startPoint);
+                if (hasTomato) {
+                    q.offer(startPoint);
+                }
             }
             if (changed == false) {
                 break;
@@ -104,6 +112,9 @@ public class Tomato {
                 }
             }
         }
-        System.out.println(answer);
+        // System.out.println(answer);
+        long end = System.currentTimeMillis();
+        double time = (end - start)/1000.0;
+        System.out.println(time+" sec");
     }
 }
